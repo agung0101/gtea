@@ -401,7 +401,7 @@ sudo apt install gnupg1 -y
 wget http://www.webmin.com/jcameron-key.asc
 sudo apt-key add jcameron-key.asc
 sudo apt update
-sudo apt install webmin
+sudo apt install webmin -y
 systemctl enable trojan
 systemctl start trojan
 systemctl restart trojan
