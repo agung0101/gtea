@@ -177,7 +177,7 @@ socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
 [sshovpn]
-accept = 443
+accept = 445
 connect = 127.0.0.1:447
 
 [openvpn]
