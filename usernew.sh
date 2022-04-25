@@ -3,10 +3,9 @@ red='\e[1;31m'
 green='\e[0;32m'
 NC='\e[0m'
 MYIP=$(wget -qO- icanhazip.com);
-echo "Script By Mardhex"
 clear
 if [[ "$IP2" = "" ]]; then
-domain=$(cat /etc/v2ray/domain)
+domain=$(cat /root/domain)
 else
 domain=$IP2
 fi
@@ -16,7 +15,6 @@ read -p "Expired (hari): " masaaktif
 
 IP=$(wget -qO- icanhazip.com);
 ssl="$(cat ~/log-install.txt | grep -w "Stunnel4" | cut -d: -f2)"
-sqd="$(cat ~/log-install.txt | grep -w "Squid" | cut -d: -f2)"
 ovpn="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 ovpn2="$(netstat -nlpu | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 sleep 1
@@ -39,40 +37,33 @@ echo -e ""
 echo -e "==============================="
 echo -e "Informasi SSH & OpenVPN"
 echo -e "==============================="
-echo -e "IP/Host     : $IP"
+echo -e "IP/Host     : $MYIP"
 echo -e "Domain      : ${domain}"
 echo -e "Username    : $Login "
 echo -e "Password    : $Pass"
 echo -e "==============================="
 echo -e "OpenSSH     : 22"
 echo -e "Dropbear    : 109, 143"
-echo -e "Ws None TLS : 2085"
-echo -e "Ws OVPN     : 2082"
-echo -e "Ws TLS      : 443"
-echo -e "SSL/TLS     : 222, 777"
-echo -e "Port Squid  : 3128, 8000"
-echo -e "Port TCP    : 443"
-echo -e "Port UDP    : 2200"
-echo -e "Port SSL    : 442"
+echo -e "Ws ssh/ovpn : 80"
+echo -e "Wss ssh/ovpn: 443"
+echo -e "SSL/TLS     : 445"
 echo -e "BadVpn      : 7100-7300"
 echo -e "==============================="
 echo -e "PAYLOAD WS  :"
-echo -e "GET / HTTP/1.1[crlf]Host: ${domain}[crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "GET / HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "==============================="
 echo -e "==============================="
 echo -e "PAYLOAD WSTLS  :"
-echo -e "GET wss:/bug/ HTTP/1.1[crlf]Host: ${domain}[crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "GET wss:/bug/ HTTP/1.1[crlf]Host: [host][crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "==============================="
 echo -e "Link Download Ovpn"
 echo -e "==============================="
-echo -e "http://$IP:81/tcp.ovpn"
-echo -e "http://$IP:81/udp.ovpn"
-echo -e "http://$IP:81/ssl.ovpn"
+echo -e "http://$MYIP:81/tcp.ovpn"
+echo -e "http://$MYIP:81/udp.ovpn"
+echo -e "http://$MYIP:81/ssl.ovpn"
 echo -e ""
 echo -e "==============================="
 echo -e "Created  : $created"
 echo -e "Expired   : $exp"
 echo -e "==============================="
-echo -e ""
-echo -e "Script By Mardhex"
 echo -e ""
